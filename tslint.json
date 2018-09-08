@@ -1,9 +1,28 @@
 {
   "defaultSeverity": "error",
-  "extends": ["tslint:recommended"],
+  "extends": [
+    "tslint:recommended",
+    "tslint-eslint-rules"
+  ],
   "jsRules": {},
   "rules": {
-    "quotemark": [true, "single"]
+    "quotemark": [true, "single"],
+    "object-literal-sort-keys": false,
+    "trailing-comma": false,
+    "no-var-requires": false,
+    "ordered-imports": false,
+    "radix": false,
+    "no-debugger": true,
+    "object-curly-spacing": true,
+    "ter-indent": [true, 2],
+    "no-unused-expressions": [1, { "allowShortCircuit": true, "allowTernary": true }],
+    "comma-spacing": [1, { "before": false, "after": true }],
+    "semi": [1, "always"],
+    "no-multi-spaces": 1,
+    "block-spacing": 1,
+    "brace-style": 1,
+    "no-multiple-empty-lines": [1, { "max": 1 }],
+    "space-before-blocks" : [1, "always"]
   },
   "rulesDirectory": []
 }

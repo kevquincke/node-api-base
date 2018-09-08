@@ -1,10 +1,10 @@
-import * as express from "express";
-import * as dotenv from "dotenv";
-import * as bodyParser from "body-parser";
-import { createConnection } from "typeorm";
-import "reflect-metadata";
+import * as express from 'express';
+import * as dotenv from 'dotenv';
+import * as bodyParser from 'body-parser';
+import { createConnection } from 'typeorm';
+import 'reflect-metadata';
 
-import { v1 } from "./controllers/api/v1";
+import { v1 } from './controllers/api/v1';
 
 class App {
   private app: express.Application;
@@ -18,29 +18,28 @@ class App {
     this.configureRoutes();
   }
 
+  public async listen(port: number, callback?: () => void) {
+    await this.connectToDatabase();
+
+    this.app.listen(port, callback);
+  }
+
   private configureViewEngine() {
-    this.app.set("view engine", "pug");
+    this.app.set('view engine', 'pug');
   }
 
   private configureMiddleware() {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
-    this.app.use(express.static("public"));
+    this.app.use(express.static('public'));
   }
 
   private configureRoutes() {
-    this.app.use("/api/v1", v1);
+    this.app.use('/api/v1', v1);
   }
 
   private async connectToDatabase() {
     await createConnection();
-  }
-
-  public async listen(port: number, callback: () => void) {
-    await this.connectToDatabase().then(() =>
-      console.log("Connected to database...")
-    );
-    this.app.listen(port, callback);
   }
 }
 

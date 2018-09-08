@@ -1,18 +1,18 @@
-import { Router, Request, Response } from "express";
-import { validate } from "class-validator";
-import * as _ from "lodash";
+import { Router, Request, Response } from 'express';
+import { validate } from 'class-validator';
+import * as _ from 'lodash';
 
-import { User } from "../../../../models/User";
-import { getValidationErrors } from "../../../../utils/ModelValidation";
+import { User } from '../../../../models/User';
+import { getValidationErrors } from '../../../../utils/ModelValidation';
 
 const router: Router = Router();
 
-router.get("/", async (req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response) => {
   const users = await User.find();
   res.send(users);
 });
 
-router.post("/", async (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
   const { username, password } = req.body;
   let user = new User();
 
