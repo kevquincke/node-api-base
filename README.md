@@ -18,24 +18,27 @@ This template comes with:
 2. Rename the folder and change `name` in `package.json` to the project name
 3. Create an `.env` file with a key called `HASH_SECRET` and give it a secret value
 4. Create a file called `ormconfig.env` and set the following values:
-    -  TYPEORM_CONNECTION = postgres `-> it can be other db refer to typeorm doc`
-    -  TYPEORM_HOST = localhost
-    -  TYPEORM_USERNAME = postgres
-    -  TYPEORM_PASSWORD = password
-    -  TYPEORM_DATABASE = databaseName
-    -  TYPEORM_PORT = 5432
-    -  TYPEORM_SYNCHRONIZE = true
-    -  TYPEORM_LOGGING = false `-> query logging`
-    
+    ```
+    TYPEORM_CONNECTION = postgres `-> it can be other db refer to typeorm doc`
+    TYPEORM_HOST = localhost
+    TYPEORM_USERNAME = postgres
+    TYPEORM_PASSWORD = password
+    TYPEORM_DATABASE = databaseName
+    TYPEORM_PORT = 5432
+    TYPEORM_SYNCHRONIZE = true
+    TYPEORM_LOGGING = false `-> query logging`
+    ```
     Leave the following properties as they are, or change them if you make any
     change to the folder structure:
     
-    -  TYPEORM_ENTITIES = src/models/\*\*/*.ts
-    -  TYPEORM_ENTITIES_DIR = src/entity
-    -  TYPEORM_MIGRATIONS = src/migration/\*\*/*.ts
-    -  TYPEORM_MIGRATIONS_DIR = src/migration
-    -  TYPEORM_SUBSCRIBERS = src/subscriber/\*\*/*.ts
-    -  TYPEORM_SUBSCRIBERS_DIR = src/subscriber
+    ```
+    TYPEORM_ENTITIES = src/models/\*\*/*.ts
+    TYPEORM_ENTITIES_DIR = src/entity
+    TYPEORM_MIGRATIONS = src/migration/\*\*/*.ts
+    TYPEORM_MIGRATIONS_DIR = src/migration
+    TYPEORM_SUBSCRIBERS = src/subscriber/\*\*/*.ts
+    TYPEORM_SUBSCRIBERS_DIR = src/subscriber
+    ```
 5. Run `yarn`
 6. Run `yarn run dev` to run on development
 7. You can now try your REST services!
