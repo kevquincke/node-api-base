@@ -1,13 +1,15 @@
-import { Router, Request, Response } from 'express';
+import { Request, Response, Router } from 'express';
 import { validate } from 'class-validator';
 import * as _ from 'lodash';
 
-import User from '../../../../models/user';
+import { authMiddleware } from '../../../../middleware/authorization.middleware';
+import { adminMiddleware } from '../../../../middleware/admin.middleware';
+import User, { UserRole } from '../../../../models/user';
 import { getValidationErrors } from '../../../../utils/ModelValidation';
 
 const router: Router = Router();
 
-router.post('/', async (req: Request, res: Response) => {
+router.post('/', [authMiddleware, adminMiddleware], async (req: Request, res: Response) => {
   let user: User = await User.findOne({ email: req.body.email });
 
   if (user) {
@@ -15,6 +17,7 @@ router.post('/', async (req: Request, res: Response) => {
   }
 
   user = new User(req.body);
+  user.role = UserRole.Admin;
 
   const errors = await validate(user);
 
@@ -27,4 +30,4 @@ router.post('/', async (req: Request, res: Response) => {
   res.header('x-auth-token', user.token).send(_.pick(user, ['id', 'email']));
 });
 
-export const UserController: Router = router;
+export const AdminController: Router = router;

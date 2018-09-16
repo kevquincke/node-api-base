@@ -4,10 +4,9 @@
   "description": "API boilerplate project for NodeJS with Typescript",
   "main": "./index.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "ts-node src/server.ts",
-    "start": "nodemon ./dist/server.js",
-    "prod": "npm run build && npm run start",
+    "build": "tsc -p .",
+    "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+    "start": "npm run build:live",
     "test": "jest",
     "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
@@ -31,10 +30,12 @@
   },
   "homepage": "https://github.com/kevquincke/node-api-base#readme",
   "devDependencies": {
+    "@types/bcrypt": "^2.0.0",
     "@types/body-parser": "^1.17.0",
     "@types/dotenv": "^4.0.3",
     "@types/express": "^4.16.0",
     "@types/jest": "^23.3.2",
+    "@types/jsonwebtoken": "^7.2.8",
     "@types/lodash": "^4.14.116",
     "@types/node": "^10.9.4",
     "jest": "^23.5.0",
@@ -43,14 +44,15 @@
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-eslint-rules": "^5.4.0",
-    "typescript": "^3.0.3",
-    "webpack": "^4.17.2"
+    "typescript": "^3.0.3"
   },
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "class-validator": "^0.9.1",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "pg": "^7.4.3",
     "pug": "^2.0.3",

@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
+import pkg from '../../../../../package.json';
 
 const router: Router = Router();
-const pkg = require('../../../../../package.json');
 
 router.get('', (req: Request, res: Response) => {
   res.render('index', {
