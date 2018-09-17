@@ -38,6 +38,7 @@
     "@types/jsonwebtoken": "^7.2.8",
     "@types/lodash": "^4.14.116",
     "@types/node": "^10.9.4",
+    "@types/winston": "^2.4.4",
     "jest": "^23.5.0",
     "ts-jest": "^23.1.4",
     "ts-loader": "^5.0.0",
@@ -52,11 +53,13 @@
     "class-validator": "^0.9.1",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "express-async-errors": "^3.0.0",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "pg": "^7.4.3",
     "pug": "^2.0.3",
     "reflect-metadata": "^0.1.12",
-    "typeorm": "^0.2.7"
+    "typeorm": "^0.2.7",
+    "winston": "^3.1.0"
   }
 }

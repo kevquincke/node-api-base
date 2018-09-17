@@ -8,15 +8,21 @@ It's based on Node v10.3.0 and Typescript v3.0.3.
 This template comes with:
 
 - Schema
-  - Users table
+  - Users table with roles (Admin and Regular by default)
 - Endpoints
-  - Sign up with user credentials
+  - Sign up regular user
+  - Sign up admin user with authentication and authorization
+  - Authentication for both kinds of users
+- Middleware
+  - Authentication
+  - Authorization (based on roles)
+  - Exception handling
   
 ### How to use
 
 1. Clone this repo
 2. Rename the folder and change `name` in `package.json` to the project name
-3. Create an `.env` file with a key called `HASH_SECRET` and give it a secret value
+3. Create an `.env` file with a key called `JWT_KEY` and give it a secret value for JsonWebToken authentication
 4. Create a file called `ormconfig.env` and set the following values:
     ```
     TYPEORM_CONNECTION = postgres `-> it can be other db refer to typeorm doc`
@@ -58,7 +64,6 @@ This template comes with:
 11. [ts-node](https://www.npmjs.com/package/ts-node) TypeScript execution and REPL for NodeJS
 12. [tslint](https://www.npmjs.com/package/tslint) Extensible static analysis tool for TypeScript
 13. [typescript](https://www.npmjs.com/package/typescript) Language for application-scale JavaScript
-14. [webpack](https://www.npmjs.com/package/webpack) Module bundler
 
 ### Current version
 **v1.0.0**
