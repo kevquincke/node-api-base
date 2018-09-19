@@ -17,37 +17,34 @@ This template comes with:
   - Authentication
   - Authorization (based on roles)
   - Exception handling
+- Tests
+  - Unit tests for user
+  - Integration tests for API
   
 ### How to use
 
 1. Clone this repo
 2. Rename the folder and change `name` in `package.json` to the project name
-3. Create an `.env` file with a key called `JWT_KEY` and give it a secret value for JsonWebToken authentication
-4. Create a file called `ormconfig.env` and set the following values:
+3. Set the `NODE_ENV` environment variable as desired (`prod`, `dev`, `env`)
+3. Create an `.env` file for each environment with a prefix value 
+of the `NODE_ENV` value for example `dev.env` for development
+4. In the `.env` file set the following values:
     ```
-    TYPEORM_CONNECTION = postgres `-> it can be other db refer to typeorm doc`
-    TYPEORM_HOST = localhost
-    TYPEORM_USERNAME = postgres
-    TYPEORM_PASSWORD = password
-    TYPEORM_DATABASE = databaseName
-    TYPEORM_PORT = 5432
-    TYPEORM_SYNCHRONIZE = true
-    TYPEORM_LOGGING = false `-> query logging`
-    ```
-    Leave the following properties as they are, or change them if you make any
-    change to the folder structure:
-    
-    ```
-    TYPEORM_ENTITIES = src/models/\*\*/*.ts
-    TYPEORM_ENTITIES_DIR = src/entity
-    TYPEORM_MIGRATIONS = src/migration/\*\*/*.ts
-    TYPEORM_MIGRATIONS_DIR = src/migration
-    TYPEORM_SUBSCRIBERS = src/subscriber/\*\*/*.ts
-    TYPEORM_SUBSCRIBERS_DIR = src/subscriber
+    JWT_KEY = secret -> a secret value for json web token hashing
+    DB_TYPE = postgres -> a database driver (check Typeorm docs for available types on 
+    http://typeorm.io/#connection-options/common-connection-options, as default postgres driver 
+    is provided, if you want to use a different one you'll need to install it)
+    DB_HOST = localhost -> database host
+    DB_PORT = 5432 -> database port
+    DB_USER = postgres -> database username
+    DB_PASS = nacional -> database password
+    DB_NAME = node-api-base -> database name
     ```
 5. Run `yarn`
 6. Run `yarn run dev` to run on development
 7. You can now try your REST services!
+
+**Tests**: To run the tests after step 5, run `yarn run test`
 
 ### NPM Packages
 
@@ -60,10 +57,17 @@ This template comes with:
 7. [pug](https://www.npmjs.com/package/pug) High performance template engine
 8. [reflect-metadata](https://www.npmjs.com/package/reflect-metadata) Runtime reflection on types
 9. [typeorm](https://www.npmjs.com/package/typeorm) ORM that can run in NodeJS
-10. [ts-loader](https://www.npmjs.com/package/ts-loader) Typescript loader for webpack
 11. [ts-node](https://www.npmjs.com/package/ts-node) TypeScript execution and REPL for NodeJS
 12. [tslint](https://www.npmjs.com/package/tslint) Extensible static analysis tool for TypeScript
 13. [typescript](https://www.npmjs.com/package/typescript) Language for application-scale JavaScript
+14. [bcrypt](https://www.npmjs.com/package/bcrypt) Lib to help to hash passwords
+15. [express-async-errors](https://www.npmjs.com/package/express-async-errors) Simple ES6 async/await support hack for ExpressJS
+16. [winston](https://www.npmjs.com/package/winston) A logger for just about everything
+17. [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) An implementation of JSON Web Tokens
+18. [jest](https://www.npmjs.com/package/jest) Delightful JavaScript Testing
+19. [ts-jest](https://www.npmjs.com/package/ts-jest) TypeScript preprocessor with source map support for Jest
+20. [supertest](https://www.npmjs.com/package/supertest) HTTP assertions made easy via superagent
+21. [tslint-eslint-rules](https://www.npmjs.com/package/tslint-eslint-rules) TypeScript rules available in ESLint
 
 ### Current version
 **v1.0.0**

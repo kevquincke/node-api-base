@@ -7,7 +7,7 @@
     "build": "tsc -p .",
     "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
     "start": "npm run build:live",
-    "test": "jest",
+    "test": "jest --verbose",
     "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "repository": {
@@ -38,8 +38,10 @@
     "@types/jsonwebtoken": "^7.2.8",
     "@types/lodash": "^4.14.116",
     "@types/node": "^10.9.4",
+    "@types/supertest": "^2.0.6",
     "@types/winston": "^2.4.4",
     "jest": "^23.5.0",
+    "supertest": "^3.3.0",
     "ts-jest": "^23.1.4",
     "ts-loader": "^5.0.0",
     "ts-node": "^7.0.1",

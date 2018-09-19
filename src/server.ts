@@ -2,7 +2,7 @@ import winston from 'winston';
 
 import App from './app';
 
-const PORT = parseInt(process.env.PORT) || 3000;
+const port = parseInt(process.env.PORT) || 3000;
 const app = new App();
 
-app.listen(PORT).then(() => winston.info(`Server running on port ${PORT}`));
+app.listen(port).then(() => winston.info(`Server running on port ${port}`));
