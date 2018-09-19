@@ -30,7 +30,7 @@ router.post('/', async (req: Request, res: Response) => {
     return res.status(400).send('Email or password incorrect');
   }
 
-  res.header(AUTH_HEADER, user.token).send();
+  res.header(AUTH_HEADER, user.token).status(204).send();
 });
 
 export const AuthenticationController: Router = router;

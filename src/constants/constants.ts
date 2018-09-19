@@ -1,1 +1,1 @@
-export const AUTH_HEADER: string = 'x-auth-token';
+export const AUTH_HEADER: string = 'token';

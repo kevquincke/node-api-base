@@ -11,4 +11,8 @@ router.get('', (req: Request, res: Response) => {
   });
 });
 
+router.get('/status', (req: Request, res: Response) => {
+  res.send({ online: true });
+});
+
 export const HomeController: Router = router;

@@ -1,9 +1,12 @@
 # Node API Base
 
+
+[![CircleCI](https://circleci.com/gh/kevquincke/node-api-base.svg?style=svg)](https://circleci.com/gh/kevquincke/node-api-base)
+
 Node Api Base is a boilerplate project for JSON RESTful APIs. 
 It's based on Node v10.3.0 and Typescript v3.0.3.
 
-### Features
+## Features
 
 This template comes with:
 
@@ -21,13 +24,13 @@ This template comes with:
   - Unit tests for user
   - Integration tests for API
   
-### How to use
+## How to use
 
 1. Clone this repo
 2. Rename the folder and change `name` in `package.json` to the project name
 3. Set the `NODE_ENV` environment variable as desired (`prod`, `dev`, `env`)
 3. Create an `.env` file for each environment with a prefix value 
-of the `NODE_ENV` value for example `dev.env` for development
+of the `NODE_ENV` (with a `.` before) value for example `.dev.env` for development
 4. In the `.env` file set the following values:
     ```
     JWT_KEY = secret -> a secret value for json web token hashing
@@ -46,7 +49,7 @@ of the `NODE_ENV` value for example `dev.env` for development
 
 **Tests**: To run the tests after step 5, run `yarn run test`
 
-### NPM Packages
+## NPM Packages
 
 1. [body-parser](https://www.npmjs.com/package/body-parser) Node.js body parsing middleware
 2. [class-validator](https://www.npmjs.com/package/class-validator) Validate incoming data
@@ -69,5 +72,11 @@ of the `NODE_ENV` value for example `dev.env` for development
 20. [supertest](https://www.npmjs.com/package/supertest) HTTP assertions made easy via superagent
 21. [tslint-eslint-rules](https://www.npmjs.com/package/tslint-eslint-rules) TypeScript rules available in ESLint
 
-### Current version
+## Api Docs
+
+https://nodeapibase.docs.apiary.io
+
+## Current version
 **v1.0.0**
+
+

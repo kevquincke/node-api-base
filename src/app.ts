@@ -58,7 +58,7 @@ class App {
   }
 
   private configureEnvironment() {
-    dotenv.config({ path: `${process.env.NODE_ENV}.env` });
+    dotenv.config({ path: `.${process.env.NODE_ENV}.env` });
 
     if (!process.env.JWT_KEY) {
       throw new Error('FATAL ERROR: JWT_KEY is not defined!');

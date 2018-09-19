@@ -12,7 +12,7 @@ jobs:
         command: yarn
     - run:
         name: Run tests
-        command: yarn test
+        command: yarn test /tests/unit
     - run:
         name: Run linter
         command: yarn lint
