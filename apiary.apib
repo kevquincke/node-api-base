@@ -1,80 +1,94 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://localhost:3000
 
-# nodeapibase
+# Node API Base
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+API boilerplate project for NodeJS with Typescript
 
-## Questions Collection [/questions]
+## Server [/status]
 
-### List All Questions [GET]
+### Server status [GET]
+
+Check if the server is online
 
 + Response 200 (application/json)
-
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                "online": true
             }
+
+## User Collection [/user]
+
+### Create User [POST]
+
+Create a new user in the app to authenticate afterwards
+
++ Request (application/json)
+
+        {
+            "email": "mail@example.com",
+            "password": "shhhh"
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmMGU2N2NlLWFlOWItNDIwOC1hOGI0LWY1NGIyNmE0OWQxZiIsInJvbGUiOiJSZWd1bGFyIiwiaWF0IjoxNTM3MzEyMDExfQ.fMrmKpkUpc3mf-Ol7j-kwL99mX74L27oP7FZApTGxSU
+
+    + Body
+
+            {
+                "id": "3f0e67ce-ae9b-4208-a8b4-f54b26a49d1f",
+                "email": "mail@example.com"
+            }
+
+## Admin Collection [/admin]
+
+### Create Admin [POST]
+
+Create a new admin in the app to manage the app. An admin 
+can only be created by other admin (authentication and authorization 
+required for this operation)
+
++ Request (application/json)
+
+        {
+            "email": "mail@example.com",
+            "password": "shhhh"
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmMGU2N2NlLWFlOWItNDIwOC1hOGI0LWY1NGIyNmE0OWQxZiIsInJvbGUiOiJSZWd1bGFyIiwiaWF0IjoxNTM3MzEyMDExfQ.fMrmKpkUpc3mf-Ol7j-kwL99mX74L27oP7FZApTGxSU
+
+    + Body
+
+            {
+                "id": "3f0e67ce-ae9b-4208-a8b4-f54b26a49d1f",
+                "email": "mail@example.com"
+            }
+
+
+## Authorization [/auth]
+
+### Login [POST]
+
+Authenticate in the app
+
++ Request (application/json)
+
+        {
+            "email": "mail@example.com",
+            "password": "shhhh"
+        }
+
++ Response 204 (application/json)
+
+    + Headers
+
+            token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmMGU2N2NlLWFlOWItNDIwOC1hOGI0LWY1NGIyNmE0OWQxZiIsInJvbGUiOiJSZWd1bGFyIiwiaWF0IjoxNTM3MzEyMDExfQ.fMrmKpkUpc3mf-Ol7j-kwL99mX74L27oP7FZApTGxSU
