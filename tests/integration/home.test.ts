@@ -1,28 +1,27 @@
-import { Server } from 'http';
 import supertest, { SuperTest, Request } from 'supertest';
 
 import App from '../../src/app';
 
-const PORT = parseInt(process.env.PORT) || 3000;
-
 describe('/api/v1/home', () => {
-  let server: Server;
   let request: SuperTest<Request>;
 
   beforeAll(async () => {
     const app = new App();
-    server = await app.listen(PORT);
-    request = supertest(server);
-  });
-
-  afterAll(async () => {
-    server.close();
+    await app.connectToDatabase();
+    request = supertest(app.server);
   });
 
   describe('GET /', () => {
     it('should return 200', async () => {
       const response = await request.get('/api/v1/');
       expect(response.status).toBe(200);
+    });
+  });
+
+  describe('GET /status', () => {
+    it('should return that server is online', async () => {
+      const response = await request.get('/api/v1/status');
+      expect(response.body).toMatchObject({ online: true });
     });
   });
 });

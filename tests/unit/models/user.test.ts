@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 import UserEntity, { UserRole } from '../../../src/models/user';
 
-describe('UserEntity token', () => {
+describe('User model', () => {
   beforeAll(() => {
     process.env.JWT_KEY = 'shhhh';
   });

@@ -20,6 +20,7 @@ export default class User extends BaseEntity {
   public id: string;
 
   @IsEmail()
+  @IsNotEmpty()
   @Column({ unique: true })
   public email: string;
 

@@ -1,5 +1,3 @@
-import { Server } from 'http';
-import { resolve } from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
@@ -12,10 +10,10 @@ import { v1 } from './controllers/api/v1';
 import { exceptionMiddleware } from './middleware/exception.middleware';
 
 class App {
-  private app: express.Application;
+  public server: express.Application;
 
   constructor() {
-    this.app = express();
+    this.server = express();
 
     this.configureEnvironment();
     this.configureLogging();
@@ -24,14 +22,21 @@ class App {
     this.configureViewEngine();
   }
 
-  public async listen(port: number, callback?: () => void): Promise<Server> {
-    await this.connectToDatabase();
-
-    return await this.app.listen(port, callback);
+  public async connectToDatabase() {
+    await createConnection({
+      type: 'postgres',
+      port: parseInt(process.env.DB_PORT, 10),
+      host: process.env.DB_HOST,
+      username: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+      logging: false,
+      entities: [__dirname + '/models/**/*.ts'],
+    });
   }
 
   private configureViewEngine() {
-    this.app.set('view engine', 'pug');
+    this.server.set('view engine', 'pug');
   }
 
   private configureLogging() {
@@ -47,14 +52,14 @@ class App {
   }
 
   private configureMiddleware() {
-    this.app.use(bodyParser.json());
-    this.app.use(bodyParser.urlencoded({ extended: false }));
-    this.app.use(express.static('public'));
+    this.server.use(bodyParser.json());
+    this.server.use(bodyParser.urlencoded({ extended: false }));
+    this.server.use(express.static('public'));
   }
 
   private configureRoutes() {
-    this.app.use('/api/v1', v1);
-    this.app.use(exceptionMiddleware);
+    this.server.use('/api/v1', v1);
+    this.server.use(exceptionMiddleware);
   }
 
   private configureEnvironment() {
@@ -63,19 +68,6 @@ class App {
     if (!process.env.JWT_KEY) {
       throw new Error('FATAL ERROR: JWT_KEY is not defined!');
     }
-  }
-
-  private async connectToDatabase() {
-    await createConnection({
-      type: 'postgres',
-      port: parseInt(process.env.DB_PORT, 10),
-      host: process.env.DB_HOST,
-      username: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
-      logging: false,
-      entities: [__dirname + '/models/**/*.ts'],
-    });
   }
 }
 

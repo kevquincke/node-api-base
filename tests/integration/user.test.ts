@@ -1,60 +1,45 @@
-import { Server } from 'http';
-import supertest, { SuperTest, Request, Response } from 'supertest';
+import supertest, { SuperTest, Request } from 'supertest';
 
-import App from '../../src/app';
 import User from '../../src/models/user';
+import App from '../../src/app';
+import { createUser } from '../helpers';
 
-const port = parseInt(process.env.PORT) || 3001;
-const email = 'test@example.com';
-
-const createUser = async (request: SuperTest<Request>): Promise<Response> => {
-  const user = {
-    email,
-    password: 'password'
-  };
-
-  return await request
-    .post('/api/v1/user')
-    .set('Content-Type', 'application/json')
-    .send(user);
+const user = {
+  email: 'test@example.com',
+  password: 'password'
 };
 
 describe('/api/v1/user', () => {
-  let server: Server;
   let request: SuperTest<Request>;
 
   beforeEach(async () => {
-    await User.delete({ email });
+    await User.delete({ email: user.email });
   });
 
   beforeAll(async () => {
     const app = new App();
-    server = await app.listen(port);
-    request = supertest(server);
-  });
-
-  afterAll(async () => {
-    server.close();
+    await app.connectToDatabase();
+    request = supertest(app.server);
   });
 
   describe('POST /', async () => {
-    it('should return 200 when mail is not in use', async () => {
-      const response = await createUser(request);
+    it('should return 200 if mail is not in use', async () => {
+      const response = await createUser(request, user);
 
       expect(response.status).toBe(200);
     });
 
-    it('should return a user object when everything is ok', async () => {
-      const response = await createUser(request);
+    it('should return a user object if everything is ok', async () => {
+      const response = await createUser(request, user);
 
-      expect(response.body).toMatchObject({ email });
+      expect(response.body).toMatchObject({ email: user.email });
     });
 
-    it('should return 400 when using an existing mail', async () => {
-      await createUser(request);
-      const response2 = await createUser(request);
+    it('should return 400 if using an existing mail', async () => {
+      await createUser(request, user);
+      const response = await createUser(request, user);
 
-      expect(response2.status).toBe(400);
+      expect(response.status).toBe(400);
     });
   });
 });
