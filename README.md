@@ -2,6 +2,7 @@
 
 
 [![CircleCI](https://circleci.com/gh/kevquincke/node-api-base.svg?style=svg)](https://circleci.com/gh/kevquincke/node-api-base)
+[![Maintainability](https://api.codeclimate.com/v1/badges/626847c10fc40fbb6c04/maintainability)](https://codeclimate.com/github/kevquincke/node-api-base/maintainability)
 
 Node Api Base is a boilerplate project for JSON RESTful APIs. 
 It's based on Node v10.3.0 and Typescript v3.0.3.
