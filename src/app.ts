@@ -2,6 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import winston from 'winston';
+import helmet from 'helmet';
+import compression from 'compression';
 import { createConnection } from 'typeorm';
 import 'reflect-metadata';
 import 'express-async-errors';
@@ -55,6 +57,8 @@ class App {
     this.server.use(bodyParser.json());
     this.server.use(bodyParser.urlencoded({ extended: false }));
     this.server.use(express.static('public'));
+    this.server.use(helmet());
+    this.server.use(compression());
   }
 
   private configureRoutes() {
