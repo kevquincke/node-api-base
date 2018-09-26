@@ -27,11 +27,7 @@ class App {
   public async connectToDatabase() {
     await createConnection({
       type: 'postgres',
-      port: parseInt(process.env.DB_PORT, 10),
-      host: process.env.DB_HOST,
-      username: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
+      url: process.env.DATABASE_URL,
       logging: false,
       entities: [__dirname + '/models/**/*.ts'],
     });
@@ -67,7 +63,7 @@ class App {
   }
 
   private configureEnvironment() {
-    dotenv.config({ path: `.${process.env.NODE_ENV}.env` });
+    dotenv.config();
 
     if (!process.env.JWT_KEY) {
       throw new Error('FATAL ERROR: JWT_KEY is not defined!');

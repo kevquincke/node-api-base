@@ -29,26 +29,26 @@ This template comes with:
 
 1. Clone this repo
 2. Rename the folder and change `name` in `package.json` to the project name
-3. Set the `NODE_ENV` environment variable as desired (`prod`, `dev`, `env`)
-3. Create an `.env` file for each environment with a prefix value 
-of the `NODE_ENV` (with a `.` before) value for example `.dev.env` for development
+3. Create an `.env` file
 4. In the `.env` file set the following values:
     ```
     JWT_KEY = secret -> a secret value for json web token hashing
-    DB_TYPE = postgres -> a database driver (check Typeorm docs for available types on 
-    http://typeorm.io/#connection-options/common-connection-options, as default postgres driver 
-    is provided, if you want to use a different one you'll need to install it)
-    DB_HOST = localhost -> database host
-    DB_PORT = 5432 -> database port
-    DB_USER = postgres -> database username
-    DB_PASS = nacional -> database password
-    DB_NAME = node-api-base -> database name
+    DATABASE_URL = database url with format postgres://user:secret@host:port/database_name
     ```
+   If you want to use another database instead of using postgres you'll need to change the `app.ts` database connection
+   method and also set the database url to an accordingly format
 5. Run `yarn`
 6. Run `yarn run dev` to run on development
 7. You can now try your REST services!
 
 **Tests**: To run the tests after step 5, run `yarn run test`
+
+## Deploying to Heroku
+
+1. Run heroku create appName on the repo
+2. Add Heroku Postgres add-on (or whatever database you're using)
+3. Set environment values in heroku settings, as shown in the previous section (`DATABASE_URL` is probably already set)
+4. Run git push heroku branch (whatever branch you want to push)
 
 ## NPM Packages
 

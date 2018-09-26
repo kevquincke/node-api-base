@@ -2,15 +2,16 @@
   "name": "node-api-base",
   "version": "1.0.0",
   "description": "API boilerplate project for NodeJS with Typescript",
-  "main": "./index.js",
+  "main": "dist/src/server.js",
   "engines": {
     "node": "10.3.0"
   },
   "scripts": {
     "build": "tsc -p .",
     "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
-    "dev": "npm run build:live",
-    "start": "npm run build && node dist/src/server.js",
+    "dev": "yarn run build:live",
+    "start": "node dist/src/server.js",
+    "postinstall": "npm run build",
     "test": "jest --verbose --coverage",
     "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
