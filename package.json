@@ -7,7 +7,7 @@
     "build": "tsc -p .",
     "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
     "start": "npm run build:live",
-    "test": "jest --verbose",
+    "test": "jest --verbose --coverage",
     "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "repository": {

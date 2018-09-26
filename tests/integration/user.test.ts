@@ -41,5 +41,11 @@ describe('/api/v1/user', () => {
 
       expect(response.status).toBe(400);
     });
+
+    it('should return 400 if data provided to endpoint is wrong', async () => {
+      const response = await createUser(request, { email: user.email });
+
+      expect(response.status).toBe(400);
+    });
   });
 });

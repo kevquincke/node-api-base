@@ -23,3 +23,13 @@ export const createAdmin = async (
     .set(AUTH_HEADER, token)
     .send(admin)
 );
+
+export const authenticate = async (
+  request: SuperTest<Request>,
+  user: any
+): Promise<Response> => (
+  await request
+  .post('/api/v1/auth')
+  .set('Content-Type', 'application/json')
+  .send(user)
+);

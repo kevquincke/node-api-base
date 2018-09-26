@@ -3,7 +3,7 @@ import supertest, { SuperTest, Request } from 'supertest';
 import App from '../../src/App';
 import User, { UserRole } from '../../src/models/user';
 import { AUTH_HEADER } from '../../src/constants/constants';
-import { createAdmin } from '../helpers';
+import { authenticate, createAdmin } from '../helpers';
 
 const superAdmin = {
   email: 'admin@example.com',
@@ -45,11 +45,7 @@ describe('/api/v1/admin', () => {
     });
 
     it('should return 200 if logged in and created by another admin', async () => {
-      const auth =
-        await request
-          .post('/api/v1/auth')
-          .set('Content-Type', 'application/json')
-          .send({ email: superAdmin.email, password: superAdmin.password });
+      const auth = await authenticate(request, superAdmin);
 
       const token = auth.get(AUTH_HEADER);
       const response = await createAdmin(request, newAdmin, token);
