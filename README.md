@@ -56,7 +56,7 @@ This template comes with:
 
 1. [body-parser](https://www.npmjs.com/package/body-parser) Node.js body parsing middleware
 2. [class-validator](https://www.npmjs.com/package/class-validator) Validate incoming data
-3. [dotenv](https://www.npmjs.com/package/dotenv) Loads environment variables from a `.env` to `process.env`
+3. [dotenv](https://www.npmjs.com/package/dotenv) Loads environment variables from a `.env` file to `process.env`
 4. [express](https://www.npmjs.com/package/express) Fast, unopinionated, minimalist web framework for NodeJS
 5. [lodash](https://www.npmjs.com/package/lodash) The Lodash library exported as Node.js modules
 6. [pg](https://www.npmjs.com/package/pg) Non-blocking PostgreSQL client for NodeJS
