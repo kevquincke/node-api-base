@@ -50,7 +50,7 @@ This template comes with:
 1. Run heroku create appName on the repo
 2. Add Heroku Postgres add-on (or whatever database you're using)
 3. Set environment values in heroku settings, as shown in the previous section (`DATABASE_URL` is probably already set)
-4. Run git push heroku branch (whatever branch you want to push)
+4. Run `git push heroku branch` (whatever branch you want to push)
 
 ## NPM Packages
 
