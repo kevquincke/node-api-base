@@ -7,7 +7,7 @@
     "node": "10.3.0"
   },
   "scripts": {
-    "build": "tsc -p .",
+    "build": "rm -rf dist/ && tsc -p .",
     "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
     "dev": "yarn run build:live",
     "start": "node dist/src/server.js",

@@ -29,7 +29,7 @@ class App {
       type: 'postgres',
       url: process.env.DATABASE_URL,
       logging: false,
-      entities: [__dirname + '/models/**/*.ts'],
+      entities: [__dirname + '/models/**/*.js'],
     });
   }
 
