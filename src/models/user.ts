@@ -15,7 +15,7 @@ export enum UserRole {
 }
 
 @Entity()
-export default class User extends BaseEntity {
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   public id: string;
 

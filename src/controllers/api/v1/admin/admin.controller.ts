@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 
 import { authMiddleware } from '../../../../middleware/authorization.middleware';
 import { adminMiddleware } from '../../../../middleware/admin.middleware';
-import User, { UserRole } from '../../../../models/user';
+import { User, UserRole } from '../../../../models/user';
 import { getValidationErrors } from '../../../../utils/ModelValidation';
 
 const router: Router = Router();

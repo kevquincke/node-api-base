@@ -10,6 +10,7 @@ import 'express-async-errors';
 
 import { v1 } from './controllers/api/v1';
 import { exceptionMiddleware } from './middleware/exception.middleware';
+import { User } from './models/user';
 
 class App {
   public server: express.Application;
@@ -28,8 +29,11 @@ class App {
     await createConnection({
       type: 'postgres',
       url: process.env.DATABASE_URL,
+      synchronize: true,
       logging: false,
-      entities: [__dirname + '/models/**/*.js'],
+      entities: [
+        __dirname + '/models/**{.ts,.js}'
+      ],
     });
   }
 

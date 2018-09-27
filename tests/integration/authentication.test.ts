@@ -1,6 +1,6 @@
 import supertest, { SuperTest, Request } from 'supertest';
 
-import User from '../../src/models/user';
+import { User } from '../../src/models/user';
 import App from '../../src/app';
 import { authenticate, createUser } from '../helpers';
 import { AUTH_HEADER } from '../../src/constants/constants';

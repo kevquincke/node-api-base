@@ -1,7 +1,7 @@
 import supertest, { SuperTest, Request } from 'supertest';
 
 import App from '../../src/App';
-import User, { UserRole } from '../../src/models/user';
+import { User, UserRole } from '../../src/models/user';
 import { AUTH_HEADER } from '../../src/constants/constants';
 import { authenticate, createAdmin } from '../helpers';
 

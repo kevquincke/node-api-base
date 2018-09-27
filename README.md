@@ -41,7 +41,7 @@ This template comes with:
 6. Run `yarn run dev` to run on development
 7. You can now try your REST services!
 
-**Tests**: To run the tests after step 5, run `yarn run test`
+**Tests**: To run the tests after step 5, run `yarn run test` (make sure to point to a test database on `DATABASE_URL`)
 
 ## Deploying to Heroku
 
