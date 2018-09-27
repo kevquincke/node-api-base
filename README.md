@@ -24,6 +24,8 @@ This template comes with:
 - Tests
   - Unit tests for user
   - Integration tests for API
+- Code quality tools
+- API documentation following https://apiblueprint.org/
   
 ## How to use
 
