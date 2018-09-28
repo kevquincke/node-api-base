@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import { User, UserRole } from '../../../src/models/user';
+import { User, UserRole } from 'models/user';
 
 describe('User model', () => {
   beforeAll(() => {

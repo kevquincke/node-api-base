@@ -1,8 +1,8 @@
 import supertest, { SuperTest, Request } from 'supertest';
 
-import App from '../../src/App';
-import { User, UserRole } from '../../src/models/user';
-import { AUTH_HEADER } from '../../src/constants/constants';
+import App from 'src/App';
+import { User, UserRole } from 'models/user';
+import { AUTH_HEADER } from 'constants/constants';
 import { authenticate, createAdmin } from '../helpers';
 
 const superAdmin = {

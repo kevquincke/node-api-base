@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
-import { AUTH_HEADER } from '../constants/constants';
+import { AUTH_HEADER } from 'constants/constants';
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction): void => {
   const token: string = req.header(AUTH_HEADER);

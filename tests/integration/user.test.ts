@@ -1,7 +1,7 @@
 import supertest, { SuperTest, Request } from 'supertest';
 
-import { User } from '../../src/models/user';
-import App from '../../src/app';
+import { User } from 'models/user';
+import App from 'src/app';
 import { createUser } from '../helpers';
 
 const user = {

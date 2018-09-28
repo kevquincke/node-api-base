@@ -8,9 +8,9 @@ import { createConnection } from 'typeorm';
 import 'reflect-metadata';
 import 'express-async-errors';
 
-import { v1 } from './controllers/api/v1';
-import { exceptionMiddleware } from './middleware/exception.middleware';
-import { User } from './models/user';
+import { v1 } from 'controllers/api/v1';
+import { exceptionMiddleware } from 'middleware/exception.middleware';
+import entities from 'models/index';
 
 class App {
   public server: express.Application;
@@ -31,9 +31,7 @@ class App {
       url: process.env.DATABASE_URL,
       synchronize: true,
       logging: false,
-      entities: [
-        __dirname + '/models/**{.ts,.js}'
-      ],
+      entities,
     });
   }
 

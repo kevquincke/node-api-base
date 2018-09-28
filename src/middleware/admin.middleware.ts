@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { User, UserRole } from '../models/user';
+import { User, UserRole } from 'models/user';
 
 export const adminMiddleware = (req: Request, res: Response, next: NextFunction): Response => {
   const user: User = (req as any).user;
