@@ -3,8 +3,8 @@ import { validate } from 'class-validator';
 import * as _ from 'lodash';
 import bcrypt from 'bcrypt';
 
-import { User } from '../../../../models/user';
-import { AUTH_HEADER } from '../../../../constants/constants';
+import { User } from 'models/user';
+import { AUTH_HEADER } from 'constants/constants';
 
 const router: Router = Router();
 

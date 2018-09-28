@@ -16,14 +16,22 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "moduleResolution": "node",
     "removeComments": true,
-    "typeRoots": [ "node_modules/@types" ],
+    "typeRoots": ["node_modules/@types"],
     "paths": {
+      "constants/*": ["constants/*"],
+      "controllers/*": ["controllers/*"],
+      "middleware/*": ["middleware/*"],
+      "migration/*": ["migration/*"],
+      "models/*": ["models/*"],
+      "subscriber/*": ["subscriber/*"],
+      "utils/*": ["utils/*"],
+      "src/*": ["*"],
       "*": [
-        "node_modules/@types/*",
-        "./src/types/*"
+        "../node_modules/@types/*",
+        "types/*"
       ]
     }
   },

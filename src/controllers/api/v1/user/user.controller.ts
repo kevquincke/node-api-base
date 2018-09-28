@@ -2,8 +2,8 @@ import { Router, Request, Response } from 'express';
 import { validate } from 'class-validator';
 import * as _ from 'lodash';
 
-import { User } from '../../../../models/user';
-import { getValidationErrors } from '../../../../utils/ModelValidation';
+import { User } from 'models/user';
+import { getValidationErrors } from 'utils/ModelValidation';
 
 const router: Router = Router();
 

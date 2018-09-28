@@ -1,6 +1,6 @@
 import supertest, { SuperTest, Request } from 'supertest';
 
-import App from '../../src/app';
+import App from 'src/app';
 
 describe('/api/v1/home', () => {
   let request: SuperTest<Request>;

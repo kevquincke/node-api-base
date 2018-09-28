@@ -1,6 +1,6 @@
 import { Request, Response, SuperTest } from 'supertest';
 
-import { AUTH_HEADER } from '../../src/constants/constants';
+import { AUTH_HEADER } from 'constants/constants';
 
 export const createUser = async (
   request: SuperTest<Request>,
