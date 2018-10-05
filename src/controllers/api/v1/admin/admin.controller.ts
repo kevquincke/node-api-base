@@ -6,6 +6,7 @@ import { authMiddleware } from 'middleware/authorization.middleware';
 import { adminMiddleware } from 'middleware/admin.middleware';
 import { User, UserRole } from 'models/user';
 import { getValidationErrors } from 'utils/ModelValidation';
+import { AUTH_HEADER } from 'constants/constants';
 
 const router: Router = Router();
 
@@ -27,7 +28,7 @@ router.post('/', [authMiddleware, adminMiddleware], async (req: Request, res: Re
 
   user = await user.save();
 
-  res.header('x-auth-token', user.token).send(_.pick(user, ['id', 'email']));
+  res.header(AUTH_HEADER, user.token).send(_.pick(user, ['id', 'email']));
 });
 
 export const AdminController: Router = router;
